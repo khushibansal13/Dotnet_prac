@@ -46,3 +46,5 @@ Migrations/
 # Windows specific
 Thumbs.db
 desktop.ini
+
+.fake
