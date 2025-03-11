@@ -17,20 +17,23 @@ namespace api.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IStockRepository _stockRepo;
+        private readonly IPortfolioRepository _portfolioRepo;
         public PortfolioController(UserManager<AppUser> userManager,
-        IStockRepository stockRepo)
+        IStockRepository stockRepo, IPortfolioRepository portfolioRepo)
         {
             _userManager = userManager;
             _stockRepo = stockRepo;
+            _portfolioRepo = portfolioRepo;
         }
 
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> GetUserPortfolio()
         {
-            var username = User.GetUserName();
-            var AppUser = await _userManager.FindByNameAsync(username);
-            var UserPortfolio
+            var username = User.GetUsername();
+            var appUser = await _userManager.FindByNameAsync(username);
+            var userPortfolio = await _portfolioRepo.GetUserPortfolio(appUser);
+            return Ok(userPortfolio);
         }
     }
 }
