@@ -1,0 +1,50 @@
+# .NET 8 .gitignore
+
+# Visual Studio and user-specific files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build output
+bin/
+obj/
+
+# Dependencies
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+
+# Logs and debugging
+*.log
+*.tlog
+*.trace
+
+# Configuration
+appsettings.Development.json
+secrets.json
+.env
+
+# ASP.NET specific
+wwwroot/node_modules/
+wwwroot/lib/
+
+# Entity Framework migrations
+Migrations/
+
+# Rider/JetBrains
+.idea/
+
+# ReSharper
+*.DotSettings.user
+
+# macOS
+.DS_Store
+
+# Windows specific
+Thumbs.db
+desktop.ini
+
+.fake
