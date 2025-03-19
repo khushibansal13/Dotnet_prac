@@ -22,6 +22,16 @@ builder.Services.AddScoped<DatabaseConfig>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200") 
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 SqlMapper.AddTypeHandler(new JsonTypeHandler<Dimensions>());
 SqlMapper.AddTypeHandler(new JsonTypeHandler<List<string>>());
 SqlMapper.AddTypeHandler(new JsonTypeHandler<List<Review>>());
@@ -34,7 +44,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowAngularApp");
 app.UseHttpsRedirection();
 // app.UseAuthorization();
 app.MapControllers();
