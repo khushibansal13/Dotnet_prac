@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using EncomApi.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using EncomApi.Mappers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EncomApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/categoryList")]
     public class CategoryController : ControllerBase

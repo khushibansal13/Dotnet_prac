@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using EncomApi.Dtos.Product;
 using EncomApi.Interfaces;
 using EncomApi.Mappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 
 namespace EncomApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/products")]
     public class ProductController : ControllerBase
