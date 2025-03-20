@@ -6,6 +6,7 @@ using EncomApi.Dtos.Product;
 using EncomApi.Interfaces;
 using EncomApi.Mappers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace EncomApi.Controllers
 {
@@ -40,6 +41,7 @@ namespace EncomApi.Controllers
         }
 
         [HttpPost("add")]
+        [EnableRateLimiting("productAdd")]
         public async Task<IActionResult> CreateProduct([FromBody] CreateProductDto createProductDto)
         {
             var category = await _repository.GetCategoryByNameAsync(createProductDto.CategoryName);
@@ -57,6 +59,7 @@ namespace EncomApi.Controllers
         }
 
         [HttpPut("{id}")]
+        [EnableRateLimiting("productUpdate")]
         public async Task<IActionResult> UpdateProduct(int id, [FromBody] UpdateProductDto updateProductDto)
         {
             var existingProduct = await _repository.GetProductByIdAsync(id);
@@ -80,6 +83,7 @@ namespace EncomApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        [EnableRateLimiting("productDelete")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
             var deleted = await _repository.DeleteProductAsync(id);
