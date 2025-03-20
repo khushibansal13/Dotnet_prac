@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace EncomApi.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/categoryList")]
     public class CategoryController : ControllerBase

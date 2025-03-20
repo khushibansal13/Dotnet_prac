@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.RateLimiting;
 
 namespace EncomApi.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/products")]
     public class ProductController : ControllerBase
