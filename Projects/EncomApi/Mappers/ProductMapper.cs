@@ -51,6 +51,7 @@ namespace EncomApi.Mappers
             };
         }
 
+
         public static void UpdateFromDto(this Product product, UpdateProductDto updateProductDto)
         {
             product.Title = updateProductDto.Title;
