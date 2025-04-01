@@ -86,8 +86,10 @@ namespace EncomApi.Tests.Controllers
                 Dimensions = new Dimensions { Width = 10.0m, Height = 5.0m, Depth = 3.0m }
             };
             _repositoryMock.Setup(m => m.GetProductByIdAsync(It.Is<int>(id => id == 1))).ReturnsAsync(product);
+
             // Act
             var result = await _controller.GetProductById(1);
+            
             // Assert
             Assert.That(result, Is.InstanceOf<OkObjectResult>());
             var okResult = result as OkObjectResult;
